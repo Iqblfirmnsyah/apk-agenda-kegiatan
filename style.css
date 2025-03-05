@@ -1,0 +1,523 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+    text-decoration: none !important;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    height: 100vh;
+    background-color: #f3f6fa;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .main {
+        margin-left: 0; /* Hapus margin jika sidebar tersembunyi */
+        padding: 10px; /* Kurangi padding untuk layar kecil */
+    }
+}
+
+
+.wrapper {
+    width: 8%;
+    padding-top: 60px; /* Jarak untuk navbar */
+}
+
+.main {
+    margin-left: 260px; /* Sesuaikan dengan lebar sidebar */
+    margin-top: 20px; /* Tambahkan jarak vertikal dari navbar */
+    padding: 20px; /* Tambahkan padding di dalam konten */
+    width: calc(100% - 260px); /* Lebar menyesuaikan sisa layar */
+    min-height: calc(100vh - 20px); /* Menghindari tumpang tindih */
+    background-color: #fafbfe; /* Warna konten utama */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Bayangan untuk memisahkan isi */
+    border-radius: 8px; /* Opsional, membuat sudut konten sedikit membulat */
+
+}
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    background-color: #0056a6;
+    transition: all 0.35s ease-in-out;
+    overflow-y: auto; /* Menambahkan scroll jika konten terlalu panjang */
+}
+
+#sidebar.expand {
+    width: 260px;
+    min-width: 260px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo a {
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 600;
+}
+
+#sidebar:not(.expand) .sidebar-logo,
+#sidebar:not(.expand) a.sidebar-link span {
+    display: none;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 0;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #3b7ddd;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar:not(.expand) .sidebar-item .sidebar-dropdown {
+    position: absolute;
+    top: 0;
+    left: 70px;
+    background-color: #0e2238;
+    padding: 0;
+    min-width: 15rem;
+    display: none;
+}
+
+#sidebar:not(.expand) .sidebar-item:hover .has-dropdown+.sidebar-dropdown {
+    display: block;
+    max-height: 15em;
+    width: 100%;
+    opacity: 1;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"]::after {
+    border: solid;
+    border-width: 0 .075rem .075rem 0;
+    content: "";
+    display: inline-block;
+    padding: 2px;
+    position: absolute;
+    right: 1.5rem;
+    top: 1.4rem;
+    transform: rotate(-135deg);
+    transition: all .2s ease-out;
+}
+
+#sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
+    transform: rotate(45deg);
+    transition: all .2s ease-out;
+}
+
+.clock{
+    border: 1px solid #0056a6;
+    color: #0056a6;
+    padding: 20px;
+    margin: 30px 0px;
+    border-radius: 10px;
+    background-color: #2222;
+}
+
+#Date{
+    font-size: 20px !important;
+    font-weight: bold;
+    text-align: center;
+}
+
+.clock ul{
+    list-style: none;
+    justify-content: center;
+    display: flex;
+    font-size: 90px;
+    font-weight: bold;
+    gap: 15px;
+}
+
+.btn-lonceng {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #0056a6;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-lonceng i {
+    margin-right: 8px; /* Jarak antara ikon dan teks */
+}
+
+.btn-lonceng:hover {
+    background-color: #00408b;
+}
+
+
+.login-container {
+    max-width: 400px;
+    width: 100%;
+    margin: 10px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+}
+
+h1, h2 {
+    text-align: center;
+    color: #0056a6; /* Warna biru Kominfo */
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 35px !important;
+    line-height: 1;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    margin-top: 10px !important;
+    
+}
+
+h2 {
+    font-size: 28px !important;
+    line-height: 1;
+    text-transform: uppercase;
+    font-weight: 800;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 20px !important;
+    margin-top: 10px;
+}
+
+h5 {
+    text-align: justify !important;
+    line-height: 1;
+    font-family: 'Poppins', sans-serif;
+    margin-left: 50 !important;
+    margin-right: 50 !important;
+
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #0056a6;
+}
+
+.input-group input,
+.input-group select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus,
+textarea:focus {
+    border-color: #0056a6;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 86, 166, 0.3);
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+/* Tombol Login */
+.login-container .btn-login {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #0056a6; /* Warna biru khas Kominfo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.login-container .btn-login:hover {
+    background-color: #00408b; /* Warna biru lebih gelap saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan saat hover */
+}
+
+.login-container .btn-login:active {
+    background-color: #002d66; /* Warna lebih gelap saat tombol ditekan */
+    transform: scale(0.98); /* Efek klik */
+}
+
+/* Tombol Batal */
+.login-container .btn-submit,
+.btn-cancel {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.login-container .btn-submit:hover {
+    background-color: #00408b; /* Warna biru lebih gelap saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan saat hover */
+}
+
+.login-container .btn-submit:active {
+    background-color: #0056a6; /* Warna lebih gelap saat tombol ditekan */
+    transform: scale(0.98); /* Efek klik */
+}
+
+.login-container .btn-cancel:hover {
+    background-color: #b02a37; /* Warna biru lebih gelap saat hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Efek bayangan saat hover */
+}
+
+.login-container .btn-cancel:active {
+    background-color: #dc3545; /* Warna lebih gelap saat tombol ditekan */
+    transform: scale(0.98); /* Efek klik */
+}
+
+.login-container .btn-login,
+.btn-cancel {
+    margin: 10px 0px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    font-size: 16px;
+    overflow-x: auto; /* Tambahkan ini untuk scroll horizontal */
+}
+
+.table th,
+.table td {
+    padding: 12px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .table th,
+    .table td {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+.table th, .table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.table th {
+    background-color: #0056a6;
+    color: white;
+    font-weight: bold;
+}
+
+.table td {
+    background-color: #f9f9f9;
+}
+
+.table tr:nth-child(even) td {
+    background-color: #f1f5fa;
+}
+
+.table tr:hover td {
+    background-color: #eaf1fa;
+}
+
+.btn-add {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 15px;
+    background-color: #0056a6;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-add i {
+    margin-right: 8px; /* Jarak antara ikon dan teks */
+}
+
+
+.btn-add:hover {
+    background-color: #00408b;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 8px 15px; /* Menambah padding agar tombol lebih besar */
+    font-size: 14px; /* Membuat font lebih konsisten */
+    font-weight: bold;
+    border: none;
+    border-radius: 5px; /* Membuat tombol lebih membulat */
+    text-decoration: none;
+    transition: 0.3s;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-edit i, .btn-delete i {
+    margin-right: 5px;
+}
+
+.btn-edit {
+    background-color: #0056a6;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #00408b;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: #b02a37;
+}
+
+.table td .btn-edit,
+.table td .btn-delete {
+    margin: 2px; /* Menambah jarak antar tombol */
+}
+
+.btn-logout {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    width: fit-content;
+    transition: 0.3s;
+}
+
+.btn-logout:hover {
+    background-color: #b02a37;
+}
+
+/* Tambahan untuk Landscape */
+@media screen and (orientation: landscape) {
+    body {
+        flex-direction: row; /* Layout horizontal */
+        height: auto;
+        padding: 20px;
+    }
+
+    .login-container {
+        width: 50%; /* Mengurangi lebar form */
+        margin: 0 auto;
+    }
+
+    h1, h2 {
+        font-size: 1.8rem;
+    }
+
+    .input-group input,
+    .input-group select,
+    textarea {
+        font-size: 14px;
+    }
+
+    .btn-login,
+    .btn-cancel {
+        font-size: 14px;
+    }
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 260px; /* Menjaga posisi footer dari sidebar */
+    width: calc(100% - 260px); /* Lebar penuh */
+    background-color: #0056a6;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    z-index: 999; /* Di atas elemen lain */
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
